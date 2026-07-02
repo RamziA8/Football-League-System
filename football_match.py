@@ -44,7 +44,7 @@ class Match:
         if self.is_draw():
             print("Result: Draw")
         else:
-            print("Winner: ", self.get_winner().name)
+            print("Winner:: ", self.get_winner().name)
 
     def to_dict(self):
         return {
