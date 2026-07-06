@@ -1,3 +1,6 @@
+
+from club import Club
+
 class League:
     def __init__(self, name, country):
         self.name = name
@@ -19,8 +22,9 @@ class League:
         for c in self.clubs:
             if c.name == club_name:
                 return c
-        print("No club found.")
+        print("No club found")
         return None
+    
 
     def add_match(self, match):
         self.matches.append(match)
@@ -30,7 +34,7 @@ class League:
         if not self.clubs:
             return None
         else:
-            return max(self.clubs, key = lambda club: club.points) 
+            return max(self.clubs, key=lambda club: (club.points, club.get_goal_difference(), club.goals_scored))
             # max finds highest value in a list
 
     def get_sorted_clubs(self):
@@ -39,10 +43,10 @@ class League:
     def print_table(self):
         sorted_clubs = self.get_sorted_clubs()
         # string formatting %s but with a number to factor it. - means left aligned
-        print("%-20s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s" % ("Club", "P", "W", "D", "L", "GF", "GA", "GD", "Pts"))
+        print("%-22s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s" % ("Club", "P", "W", "D", "L", "GF", "GA", "GD", "Pts"))
         # print("-" * 65)
         for club in sorted_clubs:
-            print("%-20s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s" % (
+            print("%-22s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s" % (
                 club.name, 
                 len(club.match_history), 
                 club.wins, 
